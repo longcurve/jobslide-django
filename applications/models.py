@@ -14,6 +14,10 @@ class Post(models.Model):
     max_salary = models.CharField(max_length=200, default="") # Maxmium Salary offered
     company = models.CharField(max_length=250) # Company offering position
     location = models.CharField(max_length=250) # Location of company
+    contact_name = models.CharField(max_length=250, default="") # Name of contact person at company
+    contact_phone = models.CharField(max_length=250, default="") # Phone number of contact person at company
+    
+
 
 
 def publish(self):
