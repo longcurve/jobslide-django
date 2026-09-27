@@ -18,8 +18,6 @@ class Post(models.Model):
     contact_phone = models.CharField(max_length=250, default="") # Phone number of contact person at company
     
 
-
-
 def publish(self):
     self.posted_date = timezone.now()
     self.save()

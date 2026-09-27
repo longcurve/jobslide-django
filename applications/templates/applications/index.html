@@ -1,10 +1,10 @@
 {% extends "applications/base.html" %}
 {% block content %}
 <div class="header">
-    <h1 class="welcome">Welcome to <em class="site_title">JobReacher!</em></h1>
+    <h1 class="welcome">Welcome to <span class="site_title">JobReacher!</span></h1>
         <hr>
     <a href="#">Login</a> or <a href="#">Register</a>
-</div
+</div>
 <div class="intro">
     <p>
         JobReacher is a job application tracking software, written in Python using Django Web Development framework.
@@ -16,7 +16,11 @@
         <li>Date application was submitted (if applicable)</li>
         <li>Company Name</li>
         <li>Company Location</li>
+        <li>Company contact information</li>
         <li>Application Status (<em>Applied</em>, <em>Interviewing</em>)</li>
+        <li>Position of interest (if applicable)</li>
+        <li>Minimum and Maximum Salary (if applicable)</li>
+        
     </ul>
 
     <p>
