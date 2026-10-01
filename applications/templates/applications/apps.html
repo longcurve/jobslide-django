@@ -2,5 +2,20 @@
 {% block content %}
  <h2> All applications available to date</h2>
  <hr>
- 
+ {% if applications %}
+ {% for app in applications %}
+        {{ app.position }}
+        {{ app.company }}
+        {{ app.location }}
+        {{ app.application_date }}
+        {{ app.status }}
+        {{ app.min_salary }}
+        {{ app.max_salary }}
+        {{ app.contact_name }}
+        {{ app.contact_phone }}
+    {% endfor %}
+    {% else %}
+    <p> There are no applications submitted</p>
+    {% endif %}
+
 {% endblock %}
