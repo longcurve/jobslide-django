@@ -4,15 +4,16 @@
  <hr>
  {% if applications %}
  {% for app in applications %}
-        {{ app.position }}
-        {{ app.company }}
-        {{ app.location }}
-        {{ app.application_date }}
-        {{ app.status }}
-        {{ app.min_salary }}
-        {{ app.max_salary }}
-        {{ app.contact_name }}
-        {{ app.contact_phone }}
+        Position: {{ app.position }}<br>
+        Company: {{ app.company }}<br>
+        Location: {{ app.location }}<br>
+        Application Date: {{ app.application_date }}<br>
+        Status: {{ app.status }}<br>
+        Min Salary: {{ app.min_salary }}<br>
+        Max Salary: {{ app.max_salary }}<br>
+        Contact Name: {{ app.contact_name }}<br>
+        Contact Phone: {{ app.contact_phone }}<br><br>
+
     {% endfor %}
     {% else %}
     <p> There are no applications submitted</p>
