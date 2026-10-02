@@ -1,7 +1,7 @@
 {% extends "applications/base.html" %}
 {% block content %}
- <h2> All applications available to date</h2>
- <hr>
+ <h2>All submitted applications</h2>
+ <a href="/apps/add"><button>Add Application</button></a><br><br>
  {% if applications %}
  {% for app in applications %}
         Position: {{ app.position }}<br>
