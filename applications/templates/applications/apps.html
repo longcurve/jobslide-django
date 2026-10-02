@@ -8,7 +8,16 @@
         Company: {{ app.company_name }}<br>
         Location: {{ app.company_location }}<br>
         Application Date: {{ app.application_date }}<br>
-        Status: {{ app.status }}<br>
+        Status:
+        {% if app.status == 1 %}
+                Applied
+            {% elif app.status == 2 %}
+                Prospective
+            {% elif app.status == 2 %}
+                prospective
+            {% else %}
+                unknown
+            {% endif %}<br>
         Min Salary: {{ app.min_salary }}<br>
         Max Salary: {{ app.max_salary }}<br>
         Contact Name: {{ app.contact_name }}<br>
