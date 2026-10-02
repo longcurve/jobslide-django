@@ -5,8 +5,8 @@
  {% if applications %}
  {% for app in applications %}
         Position: {{ app.position }}<br>
-        Company: {{ app.company }}<br>
-        Location: {{ app.location }}<br>
+        Company: {{ app.company_name }}<br>
+        Location: {{ app.company_location }}<br>
         Application Date: {{ app.application_date }}<br>
         Status: {{ app.status }}<br>
         Min Salary: {{ app.min_salary }}<br>
