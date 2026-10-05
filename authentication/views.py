@@ -45,7 +45,7 @@ def register_page(request):
         if user.exists():
             # Display an information message if the username is taken
             messages.info(request, "Username already taken!")
-            return redirect('/register/')
+            return redirect('register')
         
         # Create a new User object with the provided information
         user = User.objects.create_user(
@@ -60,12 +60,12 @@ def register_page(request):
         
         # Display an information message indicating successful account creation
         messages.info(request, "Account created Successfully!")
-        return redirect('/register/')
+        return redirect('register')
     
-    return render(request, 'register.html')
+    return render(request, 'applications/register.html')
 
 def logout_page(request):
     # Log out the user and redirect to the login page
     from django.contrib.auth import logout
     logout(request)
-    return redirect('/login/')
+    return redirect('/login')
