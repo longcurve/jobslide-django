@@ -1,5 +1,6 @@
 {% extends "applications/base.html" %}
 {% block content %}
+{% if user.is.authenticated %}
  <h2>All submitted applications</h2>
  <a href="/apps/add"><button>Add Application</button></a><br><br>
  {% if applications %}
@@ -27,5 +28,7 @@
     {% else %}
     <p> There are no applications submitted</p>
     {% endif %}
-
+{% else %}
+<p>Sorry, you must be authenticated to access this content</p>
+{% endif %}
 {% endblock %}

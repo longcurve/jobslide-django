@@ -22,6 +22,15 @@
     {% endblock %}
   </head>
   <body>
+    <div class="header">
+    <h1 class="welcome"><span class="site_title">JobReacher</span></h1>
+        <hr>
+    {% if not user.is.authenticated %}
+      <a href="#"><button>Login</button></a>  <a href="#"><button>Register</button></a>
+      {% else %}
+      <p>Welcome to JobReacher</p>
+      {% endif %}
+    </div>
     {% block content %}
     
     <script src="index.js"></script>
