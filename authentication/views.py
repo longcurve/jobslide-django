@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from .models import *
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'applications/index.html')
 
 def login_page(request):
     if request.method == "POST":
@@ -17,14 +17,14 @@ def login_page(request):
         if not User.objects.filter(username=username).exists():
             # Display an error message if the username does not exist
             messages.error(request, 'Invalid Username')
-            return redirect('/login/')
+            return redirect('/login')
         
         user = authenticate(username=username, password=password)
         
         if user is None:
             # Display an error message if authentication fails (invalid password)
             messages.error(request, "Invalid Password")
-            return redirect('/login/')
+            return redirect('/login')
         else:
             login(request, user)
             return redirect('/apps')
