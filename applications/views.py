@@ -30,4 +30,4 @@ class apps(LoginRequiredMixin,ListView):
 def newapp(request):
     context = {}
     context['form'] = NewApplicationForm()
-    return render(request, "newapp.html", context)
+    return render(request, "applications/newapp.html", context)
