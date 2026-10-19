@@ -2,7 +2,7 @@
 {% block content %}
 {% if user.is_authenticated %}
  <h2>All submitted applications</h2>
- <a href="/apps/add"><button>Add Application</button></a><br><br>
+ <a href="/newapp"><button>Add Application</button></a><br><br>
  {% if applications %}
  {% for app in applications %}
         Position: {{ app.position }}<br>
@@ -20,7 +20,8 @@
         Min Salary: {{ app.min_salary }}<br>
         Max Salary: {{ app.max_salary }}<br>
         Contact Name: {{ app.contact_name }}<br>
-        Contact Phone: {{ app.contact_phone }}<br><br>
+        Contact Phone: {{ app.contact_phone }}<br>
+        Resume: {{ app.resume }}<br><br>
 
     {% endfor %}
     {% else %}

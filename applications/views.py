@@ -1,3 +1,4 @@
+from django.conf.locale import el
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.views import generic
@@ -28,6 +29,27 @@ class apps(LoginRequiredMixin,ListView):
         return context
 
 def newapp(request):
-    context = {}
-    context['form'] = NewApplicationForm()
-    return render(request, "applications/newapp.html", context)
+    if request.method == "POST":
+        #submit the application data
+        form = NewApplicationForm(request.POST)
+        if form.is_valid():
+            # Process the form data and save it to the database
+            application = Post(
+                user=request.user,
+                application_date=form.cleaned_data["application_date"],
+                status=form.cleaned_data["status"],
+                position=form.cleaned_data["position"],
+                min_salary=form.cleaned_data["min_salary"],
+                max_salary=form.cleaned_data["max_salary"],
+                contact_name=form.cleaned_data["contact_name"],
+                contact_phone=form.cleaned_data["contact_phone"],
+                company_location=form.cleaned_data["company_location"],
+                company_name=form.cleaned_data["company_name"],
+                resume=form.cleaned_data["resume"]
+            )
+            application.save()
+            return HttpResponseRedirect("/applications")  # Redirect to the applications page after successful submission
+    else:
+        context = {}
+        context['form'] = NewApplicationForm()
+        return render(request, "applications/newapp.html", context)
