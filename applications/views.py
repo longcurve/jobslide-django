@@ -4,6 +4,8 @@ from django.views import generic
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post
+from .forms import NewApplicationForm
+from django.shortcuts import render
 
 # Create your views here.
 def index(request):
@@ -24,3 +26,8 @@ class apps(LoginRequiredMixin,ListView):
         context = super().get_context_data(**kwargs)
         context["applications"] = Post.objects.all().order_by("-posted_date")
         return context
+
+def newapp_view(request):
+    context = {}
+    context['form'] = NewApplicationForm()
+    return render(request, "newapp.html", context)
