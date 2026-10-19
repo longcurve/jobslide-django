@@ -27,7 +27,7 @@ class apps(LoginRequiredMixin,ListView):
         context["applications"] = Post.objects.all().order_by("-posted_date")
         return context
 
-def newapp_view(request):
+def newapp(request):
     context = {}
     context['form'] = NewApplicationForm()
     return render(request, "newapp.html", context)
