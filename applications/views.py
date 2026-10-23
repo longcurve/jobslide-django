@@ -4,7 +4,7 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.views import generic
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Post
+from .models import Post, User
 from .forms import NewApplicationForm
 from django.shortcuts import render
 
@@ -21,7 +21,8 @@ class apps(LoginRequiredMixin,ListView):
     context_object_name = "applications"
 
     def get_queryset(self):
-        return Post.objects.all().order_by("-posted_date")
+        user = User.objects.filter(user=request.user)
+        return Post.objects.all().filter(user=user).order_by("-posted_date")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -49,6 +50,11 @@ def newapp(request):
             )
             application.save()
             return HttpResponseRedirect("/applications")  # Redirect to the applications page after successful submission
+        else:
+            # If the form is not valid, render the form with error messages
+            context = {}
+            context['form'] = form
+            return render(request, "applications/newapp.html", context)
     else:
         context = {}
         context['form'] = NewApplicationForm()
