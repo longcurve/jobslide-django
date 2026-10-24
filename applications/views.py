@@ -4,7 +4,7 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.views import generic
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Post, User
+from .models import Post
 from .forms import NewApplicationForm
 from django.shortcuts import render
 
@@ -13,7 +13,7 @@ def index(request):
     return render(request, "applications/index.html", {})
 
 
-class apps(LoginRequiredMixin,ListView):
+class Apps(LoginRequiredMixin,ListView):
     # Get application data from database
     model = Post
     paginate_by = 50
@@ -21,8 +21,8 @@ class apps(LoginRequiredMixin,ListView):
     context_object_name = "applications"
 
     def get_queryset(self):
-        user = User.objects.filter(user=request.user)
-        return Post.objects.all().filter(user=user).order_by("-posted_date")
+        #user = User.objects.filter(user=self.request.user)
+        return Post.objects.all().filter(user__user_id=self.request.user.id).order_by("-posted_date")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
