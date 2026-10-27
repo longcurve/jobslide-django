@@ -22,7 +22,7 @@ class Apps(LoginRequiredMixin,ListView):
 
     def get_queryset(self):
         #user = User.objects.filter(user=self.request.user)
-        return Post.objects.all().filter(user__user_id=self.request.user.id).order_by("-posted_date")
+        return Post.objects.all().filter(user=self.request.user).order_by("-posted_date")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
