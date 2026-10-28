@@ -26,7 +26,7 @@ class Apps(LoginRequiredMixin,ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["applications"] = Post.objects.all().order_by("-posted_date")
+        context["applications"] = Post.objects.all().filter(user=self.request.user).order_by("-posted_date")
         return context
 
 def newapp(request):
