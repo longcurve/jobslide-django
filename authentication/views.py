@@ -60,7 +60,7 @@ def register_page(request):
         
         # Display an information message indicating successful account creation
         messages.info(request, "Account created Successfully!")
-        return redirect('register')
+        return redirect('/apps')
     
     return render(request, 'applications/register.html')
 
