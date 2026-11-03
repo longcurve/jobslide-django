@@ -1,4 +1,4 @@
-from django import forms
+from django.forms import forms, ModelForm
 from django.core.validators import MinLengthValidator
 from django.db import models
 
@@ -8,7 +8,7 @@ APPLICATION_STATUS_CHOICES = [
     ('3', 'Prospective'),
 ]
 
-class NewApplicationForm(forms.Form):
+class NewApplicationForm(ModelForm):
     application_date = forms.DateTimeField(required=False) # Date application was submitted to company
     status = forms.Select(choices=APPLICATION_STATUS_CHOICES) # Interviewing, Applied, Prospective - Should be changed to a drop down or check box
     position = forms.CharField(max_length=250) # Company position of interest
