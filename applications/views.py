@@ -5,7 +5,7 @@ from django.views import generic
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post
-from .forms import NewApplicationForm
+from .forms import NewApplication
 from django.shortcuts import render
 
 # Create your views here.
@@ -32,7 +32,7 @@ class Apps(LoginRequiredMixin,ListView):
 def newapp(request):
     if request.method == "POST":
         #submit the application data
-        form = NewApplicationForm(request.POST)
+        form = NewApplication(request.POST)
         if form.is_valid():
             # Process the form data and save it to the database
             application = Post(
@@ -57,5 +57,5 @@ def newapp(request):
             return render(request, "applications/newapp.html", context)
     else:
         context = {}
-        context['form'] = NewApplicationForm()
+        context['form'] = NewApplication()
         return render(request, "applications/newapp.html", context)
