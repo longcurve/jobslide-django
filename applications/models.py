@@ -20,8 +20,9 @@ class Post(models.Model):
     contact_phone = models.CharField(max_length=250, default="") # Phone number of contact person at company
     company_location = models.CharField(max_length=250, default="") # Location of company
     company_name = models.CharField(max_length=250, default="") # Name of company
-    resume = models.FileField(upload_to='resumes/', blank=True, null=True) # Resume file uploaded by user
-
+    #resume = models.FileField(upload_to='resumes/', blank=True, null=True) # Resume file uploaded by user
+    resume = models.CharField(max_length=250, default="") # Name of Resume used to apply
+    
 def publish(self):
     self.posted_date = timezone.now()
     self.save()
