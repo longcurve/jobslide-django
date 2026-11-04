@@ -9,6 +9,8 @@ urlpatterns = [
     path("accounts/login/", auth_views.LoginView.as_view()),
     path("applications", views.Apps.as_view(), name="applications"),
     path("apps", views.Apps.as_view(), name="Apps"),
+    path('apps/edit/<int:id>/', views.edit_post, name='edit_post'),
+    path('apps/delete/<int:id>/', views.delete_post, name='delete_post'),
     path("newapp", views.newapp, name="newapp"),
     #path("<int:pk>/", views.DetailView.as_view(), name="detail"),
     #path("<int:pk>/results/", views.ResultsView.as_view(), name="results"),

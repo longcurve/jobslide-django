@@ -59,3 +59,27 @@ def newapp(request):
         context = {}
         context['form'] = NewApplication()
         return render(request, "applications/newapp.html", context)
+
+def edit_post(request, id):
+    post = get_object_or_404(Post, id=id)
+
+    if request.method == "POST":
+        form = NewApplication(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("/applications")  # Redirect to the applications page after successful submission
+    else:
+        form = NewApplication(instance=post)
+
+    context = {'form': form}
+    return render(request, "applications/edit_post.html", context)
+
+def delete_post(Request, id):
+    post = get_object_or_404(Post, id=id)
+
+    if request.method == "POST":
+        post.delete()
+        return HttpResponseRedirect("/applications")  # Redirect to the applications page after successful deletion
+
+    context = {'post': post}
+    return render(request, "applications/delete_post.html", context)

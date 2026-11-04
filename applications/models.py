@@ -12,7 +12,7 @@ class Post(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE) # Userho added an application entry
     posted_date = models.DateTimeField(default=timezone.now) # Date job application was saved by user
     application_date = models.DateTimeField(blank=True, null=True) # Date application was submitted to company
-    status = models.CharField(max_length=4) # Interviewing, Applied, Prospective - Should be changed to a drop down or check box
+    status = models.CharField(max_length=4, choices=APPLICATION_STATUS_CHOICES, default='3') # Interviewing, Applied, Prospective - Should be changed to a drop down or check box
     position = models.CharField(max_length=250) # Company position of interest
     min_salary = models.CharField(max_length=200, default="") # Minimum Salary offered
     max_salary = models.CharField(max_length=200, default="N/A") # Location of company

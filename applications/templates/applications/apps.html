@@ -15,7 +15,8 @@
         Contact Name: {{ app.contact_name }}<br>
         Contact Phone: {{ app.contact_phone }}<br>
         Resume: {{ app.resume }}<br><br>
-
+        <a href="{% url 'edit_post' app.id %}"><button>Edit</button></a>
+        <a href="{% url 'delete_post' app.id %}"><button>Delete</button></a><br><br>
     {% endfor %}
     {% else %}
     <p> There are no applications submitted</p>
