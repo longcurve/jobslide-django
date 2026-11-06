@@ -74,7 +74,7 @@ def edit_post(request, id):
     context = {'form': form}
     return render(request, "applications/edit_post.html", context)
 
-def delete_post(Request, id):
+def delete_post(request, id):
     post = get_object_or_404(Post, id=id)
 
     if request.method == "POST":
