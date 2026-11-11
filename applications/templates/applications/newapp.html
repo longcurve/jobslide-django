@@ -2,13 +2,32 @@
 <html>
 <head>
     <title>JobReacher - Add New Application</title>
+    <style>
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #89def3;
+        }
+    </style>
 </head>
 <body>
+    {% if user.is_authenticated %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
     <h2>Add New Application</h2>
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Submit">
     </form>
+    {% else %}
+    <p>Sorry, you must be authenticated to access this content</p>
+    {% endif %}
 </body>
 </html>

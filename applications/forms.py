@@ -26,3 +26,45 @@ class NewApplication(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['application_date', 'status', 'position', 'min_salary', 'max_salary', 'contact_name', 'contact_phone', 'company_location', 'company_name', 'resume']
+        widgets = {
+            'application_date': forms.DateTimeInput(attrs={
+            'class': 'form-control',
+            'style': 'background-color: cyan; width: 200px;',
+            'placeholder': '10/10/2026'}),
+            'status': forms.Select(attrs={
+            'style': 'background-color: cyan; width: 200px',
+            'class': 'form-control',
+            'placeholder': ''}),
+            'position': forms.TextInput(attrs={
+                'class': 'form-control',
+                'style': 'background-color: cyan; width: 200px;',
+            }),
+            'min_salary': forms.TextInput(attrs={
+                'class': 'form-control',
+                'style': 'background-color: cyan; width: 200px;',
+            }),
+            'max_salary': forms.TextInput(attrs={
+                'class': 'form-control',
+                'style': 'background-color: cyan; width: 200px;',
+            }), 
+            'contact_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'style': 'background-color: cyan; width: 200px;',
+            }),
+            'contact_phone': forms.TextInput(attrs={
+                'class': 'form-control',
+                'style': 'background-color: cyan; width: 200px;',
+            }),
+            'company_location': forms.TextInput(attrs={
+                'class': 'form-control',
+                'style': 'background-color: cyan; width: 200px;',
+            }),
+            'company_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'style': 'background-color: cyan; width: 200px;',
+            }),
+            'resume': forms.TextInput(attrs={
+                'class': 'form-control',
+                'style': 'background-color: cyan; width: 200px;',
+            }), 
+         }

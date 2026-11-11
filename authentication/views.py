@@ -57,11 +57,11 @@ def register_page(request):
         # Set the user's password and save the user object
         user.set_password(password)
         user_created = user.save()
-        login(request, user)
+        #login(request, user)
         
         # Display an information message indicating successful account creation
         messages.info(request, "Account created Successfully!")
-        return redirect('/apps')
+        return redirect('/register')
     
     return render(request, 'applications/register.html')
 
