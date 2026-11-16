@@ -2,8 +2,9 @@
 {% block content %}
 {% if user.is_authenticated %}
 <a href="logout"><button>Logout</button></a><br><br>
- <h2>All submitted applications</h2>
+ 
  <a href="/newapp"><button>Add Application</button></a><br><br>
+ <h2>All submitted applications</h2>
  {% if applications %}
  {% for app in applications %}
         Position: {{ app.position }}<br>
@@ -20,9 +21,9 @@
         <a href="{% url 'applications:delete_post' app.id %}"><button>Delete</button></a><br><br>
     {% endfor %}
     {% else %}
-    <p> There are no applications submitted</p>
+    <p>You have not submitted any applications yet!</p>
     {% endif %}
 {% else %}
-<p>Sorry, you must be authenticated to access this content</p>
+<p>Sorry, you must be logged in to access this content</p>
 {% endif %}
 {% endblock %}

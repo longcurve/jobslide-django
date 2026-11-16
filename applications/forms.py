@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import formset_factory
 from django.core.validators import MinLengthValidator
 from django.db import models
 from .models import Post
@@ -68,3 +69,5 @@ class NewApplication(forms.ModelForm):
                 'style': 'background-color: cyan; width: 200px;',
             }), 
          }
+
+NewApplicationFormSet = formset_factory(NewApplication, extra=1)
