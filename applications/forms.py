@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import formset_factory
+from django.forms import formset_factory, modelformset_factory
 from django.core.validators import MinLengthValidator
 from django.db import models
 from .models import Post
@@ -70,4 +70,4 @@ class NewApplication(forms.ModelForm):
             }), 
          }
 
-NewApplicationFormSet = formset_factory(NewApplication, extra=1)
+NewApplicationFormSet = modelformset_factory(Post, form=NewApplication, extra=1)
