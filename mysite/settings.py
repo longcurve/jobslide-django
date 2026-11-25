@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 import os
+import django
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,8 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.forms',
     'applications.apps.ApplicationsConfig',
-    'authentication'
+    'authentication',
 ]
 
 MIDDLEWARE = [
@@ -55,13 +57,18 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mysite.urls'
 
+# path to tempates included in django
+django_form_templates = django.__path__[0] + '/forms/templates'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['django_forms_templates', django_form_templates, os.path.join(BASE_DIR, 'applications/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -69,6 +76,10 @@ TEMPLATES = [
         },
     },
 ]
+
+# use custom templates with forms
+FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
+
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
