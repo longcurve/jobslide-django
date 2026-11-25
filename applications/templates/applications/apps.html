@@ -6,20 +6,16 @@
  <a href="/newapp"><button>Add Application</button></a><br><br>
  <h2>All submitted applications</h2>
  {% if applications %}
- {% for app in applications %}
-        Position: {{ app.position }}<br>
-        Company: {{ app.company_name }}<br>
-        Location: {{ app.company_location }}<br>
-        Application Date: {{ app.application_date }}<br>
-        Status: {{ app.get_status_display }}<br>
-        Min Salary: {{ app.min_salary }}<br>
-        Max Salary: {{ app.max_salary }}<br>
-        Contact Name: {{ app.contact_name }}<br>
-        Contact Phone: {{ app.contact_phone }}<br>
-        Resume: {{ app.resume }}<br><br>
-        <a href="{% url 'applications:edit_post' app.id %}"><button>Edit</button></a>
-        <a href="{% url 'applications:delete_post' app.id %}"><button>Delete</button></a><br><br>
+ <form method="post">
+    {% csrf_token %}
+    {% for form in formset.empty_forms %}
+    {{ form.as_p }}
     {% endfor %}
+ {% for form in formset.initial_forms %}
+    {{ form.as_p }}
+ {% endfor %}   
+ <button type"submit">Save</button>
+ </form>
     {% else %}
     <p>You have not submitted any applications yet!</p>
     {% endif %}

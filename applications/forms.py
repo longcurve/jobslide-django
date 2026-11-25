@@ -30,43 +30,43 @@ class NewApplication(forms.ModelForm):
         widgets = {
             'application_date': forms.DateTimeInput(attrs={
             'class': 'form-control',
-            'style': 'background-color: cyan; width: 200px;',
+            
             'placeholder': '10/10/2026'}),
             'status': forms.Select(attrs={
-            'style': 'background-color: cyan; width: 200px',
+            
             'class': 'form-control',
             'placeholder': ''}),
             'position': forms.TextInput(attrs={
-                'class': 'form-control',
-                'style': 'background-color: cyan; width: 200px;',
+                'class': 'form-control textinput',
+                
             }),
             'min_salary': forms.TextInput(attrs={
-                'class': 'form-control',
-                'style': 'background-color: cyan; width: 200px;',
+                'class': 'form-control textinput',
+                
             }),
             'max_salary': forms.TextInput(attrs={
-                'class': 'form-control',
-                'style': 'background-color: cyan; width: 200px;',
+                'class': 'form-control textinput',
+                
             }), 
             'contact_name': forms.TextInput(attrs={
-                'class': 'form-control',
-                'style': 'background-color: cyan; width: 200px;',
+                'class': 'form-control textinput',
+                
             }),
             'contact_phone': forms.TextInput(attrs={
-                'class': 'form-control',
-                'style': 'background-color: cyan; width: 200px;',
+                'class': 'form-control textinput',
+                
             }),
             'company_location': forms.TextInput(attrs={
-                'class': 'form-control',
-                'style': 'background-color: cyan; width: 200px;',
+                'class': 'form-control textinput',
+                
             }),
             'company_name': forms.TextInput(attrs={
-                'class': 'form-control',
-                'style': 'background-color: cyan; width: 200px;',
+                'class': 'form-control textinput',
+                
             }),
             'resume': forms.TextInput(attrs={
-                'class': 'form-control',
-                'style': 'background-color: cyan; width: 200px;',
+                'class': 'form-control textinput',
+                
             }), 
          }
 

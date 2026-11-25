@@ -1,0 +1,28 @@
+.welcome {
+        max-width: 800px;
+        text-align:center;
+      }
+
+.site_title {
+        color: cyan;
+        text-style: italic;
+        text-shadow: 3px 3px blue;
+}
+
+.form-control {
+    width: 25%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #6aafe7;
+    border-radius: 2px;
+}
+
+.textinput {
+    width: 25%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #82a8e0;
+    border-radius: 2px;
+}
+
+ 

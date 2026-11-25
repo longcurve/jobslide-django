@@ -5,7 +5,7 @@ from django.views import generic
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post
-from .forms import NewApplication
+from .forms import NewApplication, NewApplicationFormSet
 from django.shortcuts import render
 
 # Create your views here.
@@ -27,7 +27,26 @@ class Apps(LoginRequiredMixin,ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["applications"] = Post.objects.all().filter(user=self.request.user).order_by("-posted_date")
+        context["formset"] = NewApplicationFormSet(self.request.POST or None, queryset=self.get_queryset())
         return context
+
+    def post(self, request, *args, **kwargs):
+        self.object_list = self.get_queryset()
+        context = self.get_context_data()
+        formset = context['formset']
+
+        if formset.is_valid():
+            formset.save(commit=False)  # Save the formset without committing to the database yet
+            for form in formset:
+                if form.cleaned_data and not form.cleaned_data.get('DELETE', False):
+                    application = form.save(commit=False)
+                    application.user = request.user  # Set the user for each application
+                    application.save()  # Save the application to the database
+            # Yay it worked and saved, redirect somewhere
+            return HttpResponseRedirect("/apps")  # Redirect to the applications page after successful submission
+        
+        # If the formset is invalid, re-render the template to show errors
+        return self.render_to_response(context)
 
 def newapp(request):
     if request.method == "POST":
